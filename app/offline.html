@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="apple-touch-icon" href="./lib/img/Recurso192.png">
+    <link rel="shortcut icon" href="./lib/img/Recurso64.png" type="image/x-icon">
+    <title>Sin Conexión</title>
+    <meta name="theme-color" content="#fff" id="theme">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./font.css">
+</head>
+
+<body>
+    <h1 style="margin-top: 32px;">
+        Sin Conexión
+    </h1>
+    <p style="margin-left: 18px; margin-top: -10px;">Necesitas una conexión estable para continuar.
+    </p>
+    <button class="round big" style="left: 50%; transform: translate(-50%,50%);bottom: 50%;"
+        onclick="window.location.href = './index.html'"> REINTENTAR <div class="rippleJS"></div></button>
+</body>
+<script src="./lib/js/jquery.min.js"></script>
+<script>
+    $(() => {
+        if (window.localStorage.getItem('nightmode') == 'off') {
+            $('html').addClass('color-day')
+            $('#theme')[0].content = '#F1F1F1';
+        } else {
+            $('html').removeClass('color-day')
+            $('#theme')[0].content = '#333333';
+        }
+        navigator.connection.onchange = () => {
+            setTimeout(() => {
+                fetch('https://api.ipify.org?format=json&callback= ').then(x => {
+                    window.location.href = './index.html'
+                })
+            }, 1000)
+        };
+    })
+</script>
+<script src="./lib/js/ripple.js"></script>
+
+</html>

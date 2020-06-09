@@ -1,0 +1,21 @@
+{
+	"name": "AULA",
+	"short_name": "Aula",
+	"start_url": "./",
+    "display": "standalone",
+    "orientation": "portrait",
+	"background_color": "#fff",
+	"theme_color": "#728FE1",
+	"icons": [{
+		"src": "../lib/img/asset_192.png",
+		"sizes": "192x192",
+		"type": "image/png",
+		"purpose": "any"
+	},
+	{
+		"src": "../lib/img/asset_512.png",
+		"sizes": "512x512",
+		"type": "image/png",
+		"purpose": "any"
+	}]
+}
