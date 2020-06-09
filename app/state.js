@@ -24,7 +24,7 @@ function decideNow() {
     }
 }
 
-
+// obteniendo el archivo
 app.getFile = (x) => {
     return new Promise((resolve, regect) => {
         fetch(x, { cache: 'no-cache' }).then(Response => {
