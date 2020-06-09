@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="apple-touch-icon" href="./lib/img/a_logo.svg">
@@ -8,10 +9,11 @@
     <meta name="theme-color" content="#728FE1">
     <title>AULA - Inicio</title>
     <script src="./lib/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./lib/font/font.css">
 </head>
 
 <body class="content">
-   
+
     <div class="nav">
         <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 681.48 149.13">
                 <polygon points="85.6 0 0 148.13 42.28 148.13 85.37 73.49 128.47 149.13 171.19 149.13 85.6 0" />
@@ -27,74 +29,14 @@
     </div>
 
 
-        <div class="bann"></div>
-        <div class="bann2"></div>
-  
+    <div class="bann">
+        <div class="title">Aulas a través <br>de <b>Whatsapp</b></div>
+    </div>
+    <div class="bann2"></div>
+
 
     <style>
-        body {
-            color: white;
-            margin: 0;
-            background-color: #728FE1;
-            overflow: hidden;
-            overflow-y: auto;
-
-        }
-
-        .nav {
-            height: 56px;
-            width: 100%;
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 3;
-            box-shadow: none;
-            background-color: #728FE1;
-            transition: ease-in 150ms;
-        }
-
-        .nav.big {
-           
-            box-shadow: 0px -3px 10px 2px #0000003b !important;
-        }
-
-        .nav .logo {
-            position: absolute;
-            top: 15px;
-            left: 9px;
-            height: 48px;
-            width: 100px;
-            background-repeat: no-repeat;
-            fill: #fff;
-        }
-
-        .content {
-            position: absolute;
-            top: 56px;
-            left: 0;
-            width: 100%;
-            height: calc(100% - 56px);
-          
-        }
-
-        .bann {
-            position: fixed;
-            background-image: url('./lib/img/lines.png');
-            width: 100%;
-            height: 80%;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position-y: top;
-            background-position-x: right;
-        }
-
-       .bann2 {
-            position: absolute;
-            top: 80%;
-            width: 100%;
-            height: 800px;
-            background-color: #fff;
-        }
+      
     </style>
     <script>
         window.onscroll = () => {
