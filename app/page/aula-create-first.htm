@@ -1,18 +1,47 @@
 <pagetitle hidden>Crear aula</pagetitle>
 <div class="page">
     <div class="logo"></div>
-<div class="forms">
-    <p>Primero necesitas una cuenta</p>
-    <form >
-        <input type="text" placeholder="nombre"><br>
-        <input type="text" placeholder="apellido"><br>
-        <input type="text" placeholder="nickname"><br>
-        <input type="text" placeholder="e-mail"><br>
-        <input type="password" placeholder="contraseña"><br>
-        <input type="password" placeholder="repite la contraseña"><br>
+    <div class="forms">
+        <p>Primero necesitas una cuenta</p>
+        <form>
+            <input type="text" placeholder="nombre"><br>
+            <input type="text" placeholder="apellido"><br>
+            <input type="text" placeholder="nickname"><br>
+            <input type="text" placeholder="e-mail"><br>
+            <input type="password" placeholder="contraseña"><br>
+            <input type="password" placeholder="repite la contraseña"><br>
 
-    </form>
+        </form>
+        <br>
+        <a href="./index.html">ya tengo cuenta</a>
+    </div>
+    
+    <button class="nex" onclick="openPg('aula-create-first-scnd');">Siguiente</button>
 </div>
-<a href="./index.html">ya tengo cuenta</a>
-    <button onclick="openPg('aula-create-first-scnd');">Siguiente</button>
-</div>
+
+<style>
+    .forms{
+        position: absolute;
+        top: 20%;
+        left: calc(50% - 174px);
+        width: 300px;
+        border-radius: 15px;
+        background-color: var(--contrast, var(--back-n));
+        box-shadow: 2px 3px 4px -1px #00000017;
+        padding: 24px;
+    }
+    .nex{
+        position: fixed;
+        right: 24px;
+        bottom: 16px;
+    }
+    .bak{
+        position: fixed;
+        left: 24px;
+        bottom: 16px;
+        background: var(--contrast, var(--back-n));
+        color: var(--color-pri, var(--color-n));
+        border: var(--color-pri, var(--color-n)) 1px solid;
+        
+    }
+</style>

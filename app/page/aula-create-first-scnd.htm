@@ -2,12 +2,13 @@
     <div class="logo"></div>
 <div class="forms">
     <p>Crear aula virtual</p>
-    <form >
+    <form onsubmit="app.aula.new(event)">
         <input type="text" placeholder="Nombre del aula"><br>
         <input type="text" placeholder="Instituto (Opcional)"><br>
         <input type="number" placeholder="Limite alumnos" max="99" ><br>
-<input type="submit" value="" hidden>
+<input type="submit" id="logformbtn" hidden>
     </form>
 </div>
-    <button onclick="">Siguiente</button>
+    <button class="nex" onclick="$('#logformbtn').click()">Siguiente</button>
+    <button class="bak" onclick="history.back();window.navigator.vibrate(50)">Volver</button>
 </div>
