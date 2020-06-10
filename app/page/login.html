@@ -1,0 +1,38 @@
+<pagetitle hidden>LOGIN</pagetitle>
+
+<div class="controls">
+    <button class="to-right" onclick="$('#logformbtn').click()">
+        <div class="rippleJS"></div>Siguiente
+    </button>
+</div>
+
+<h1>
+    Iniciar <br>
+    <span class="high">Sesión</span>
+</h1>
+
+<div class="mlogodd">
+    <form name="form" id="logform" onsubmit="app.login.in(event)">
+        <input class="ainp" type="text" placeholder="Usuario" autocomplete="off" style="background-color: var(--back);"
+            name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese su nombre de usuario')"
+            oninput="this.setCustomValidity('')">
+        <input class="ainp" type="password" placeholder="Contraseña" style="background-color: var(--back);"
+            name="form-pass" required maxlength="20" oninvalid="this.setCustomValidity('Ingrese su contraseña')"
+            oninput="this.setCustomValidity('')" autocomplete="new-password">
+        <button id="logformbtn" type="submit" hidden></button>
+    </form>
+</div>
+<script>
+    $(() => {
+      
+        app.input.format();
+        setTimeout(() => {
+            $('.mlogo').addClass('cardi ');
+            $('#logform').css('opacity', '1');
+            $('.controls').css({ 'display': 'block' })
+            setTimeout(() => {
+                $('#ainput0').focus()
+            }, 400)
+        }, 1000)
+    })
+</script>

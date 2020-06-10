@@ -1,31 +1,41 @@
 <pagetitle hidden>Crear aula</pagetitle>
 <div class="page">
     <div class="logo"></div>
+    <p class="titpri">Primero necesitas una cuenta</p>
     <div class="forms">
-        <p>Primero necesitas una cuenta</p>
+        <br>
         <form>
-            <input type="text" placeholder="nombre"><br>
-            <input type="text" placeholder="apellido"><br>
-            <input type="text" placeholder="nickname"><br>
-            <input type="text" placeholder="e-mail"><br>
-            <input type="password" placeholder="contraseña"><br>
-            <input type="password" placeholder="repite la contraseña"><br>
+            <input class="ainp" type="text" placeholder="Nombre" autocomplete="off" style="background-color: var(--contrast);"
+            name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese su nombre')"
+            oninput="this.setCustomValidity('')">
+            <input class="ainp" type="text" placeholder="Apellido" autocomplete="off" style="background-color: var(--contrast);"
+            name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese su apellido')"
+            oninput="this.setCustomValidity('')">
+            <input class="ainp" type="text" placeholder="E-mail" autocomplete="off" style="background-color: var(--contrast);"
+            name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese su e-mail')"
+            oninput="this.setCustomValidity('')">
+            <input class="ainp" type="text" placeholder="Número celular" autocomplete="off" style="background-color: var(--contrast);"
+            name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese su número celular')"
+            oninput="this.setCustomValidity('')">
+            <input class="ainp" type="password" placeholder="Contraseña" style="background-color: var(--contrast);"
+            name="form-pass" required maxlength="20" oninvalid="this.setCustomValidity('Ingrese su contraseña')"
+            oninput="this.setCustomValidity('')" autocomplete="new-password"><br>
 
         </form>
         <br>
         <a href="./index.html">ya tengo cuenta</a>
     </div>
     
-    <button class="nex" onclick="openPg('aula-create-first-scnd');">Siguiente</button>
+    <button class="nex round" onclick="openPg('aula-create-first-scnd');">Siguiente   <div class="rippleJS"></div></button>
 </div>
 
 <style>
     .forms{
         position: absolute;
-        top: 20%;
-        left: calc(50% - 174px);
-        width: 300px;
-        border-radius: 15px;
+        top: 25%;
+        left: 5%;
+        width: 80%;
+        border-radius: 10px;
         background-color: var(--contrast, var(--back-n));
         box-shadow: 2px 3px 4px -1px #00000017;
         padding: 24px;
@@ -44,4 +54,23 @@
         border: var(--color-pri, var(--color-n)) 1px solid;
         
     }
+    .titpri{
+        position: absolute;
+        top: calc(15% + 8px);
+        width: 100%;
+        text-align: center;
+    }
+    .logo{
+        position: absolute;
+        background-image: url('../lib/img/Asset_192.png');
+        height: 100px;
+        width: 100px;
+        top: 30px;
+        left: calc(50% - 50px);
+        background-size: cover;
+    }
 </style>
+
+<script>
+     app.input.format();
+</script>
