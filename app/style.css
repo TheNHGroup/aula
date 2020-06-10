@@ -366,31 +366,6 @@ input[type='date']:focus {
     border: 1px var(--color-pri, var(--color-pri-n)) solid;
 }
 
-/*LOGIN FORM*/
-
-#logform {
-    width: 80%;
-    left: 10%;
-    position: absolute;
-    top: calc(50% - 20px);
-    opacity: 0;
-    transition: var(--transition);
-}
-
-@media(max-height:300px) {
-    #logform {
-        top: calc(50% - 50.5px);
-    }
-    .mlogo img {
-        opacity: 0;
-    }
-    .controls {
-        display: none !important;
-    }
-    h1{
-        display: none !important
-    }
-}
 
 
 /* MENU DE OPCIONES */

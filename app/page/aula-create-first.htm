@@ -5,32 +5,35 @@
     <div class="forms">
         <br>
         <form>
-            <input class="ainp" type="text" placeholder="Nombre" autocomplete="off" style="background-color: var(--contrast);"
-            name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese su nombre')"
-            oninput="this.setCustomValidity('')">
-            <input class="ainp" type="text" placeholder="Apellido" autocomplete="off" style="background-color: var(--contrast);"
-            name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese su apellido')"
-            oninput="this.setCustomValidity('')">
-            <input class="ainp" type="text" placeholder="E-mail" autocomplete="off" style="background-color: var(--contrast);"
-            name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese su e-mail')"
-            oninput="this.setCustomValidity('')">
-            <input class="ainp" type="text" placeholder="Número celular" autocomplete="off" style="background-color: var(--contrast);"
-            name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese su número celular')"
-            oninput="this.setCustomValidity('')">
+            <input class="ainp" type="text" placeholder="Nombre" autocomplete="off"
+                style="background-color: var(--contrast);" name="form-name" required maxlength="100"
+                oninvalid="this.setCustomValidity('Ingrese su nombre')" oninput="this.setCustomValidity('')">
+            <input class="ainp" type="text" placeholder="Apellido" autocomplete="off"
+                style="background-color: var(--contrast);" name="form-name" required maxlength="100"
+                oninvalid="this.setCustomValidity('Ingrese su apellido')" oninput="this.setCustomValidity('')">
+            <input class="ainp" type="text" placeholder="E-mail" autocomplete="off"
+                style="background-color: var(--contrast);" name="form-name" required maxlength="100"
+                oninvalid="this.setCustomValidity('Ingrese su e-mail')" oninput="this.setCustomValidity('')">
+            <input class="ainp" type="text" placeholder="Número celular" autocomplete="off"
+                style="background-color: var(--contrast);" name="form-name" required maxlength="100"
+                oninvalid="this.setCustomValidity('Ingrese su número celular')" oninput="this.setCustomValidity('')">
             <input class="ainp" type="password" placeholder="Contraseña" style="background-color: var(--contrast);"
-            name="form-pass" required maxlength="20" oninvalid="this.setCustomValidity('Ingrese su contraseña')"
-            oninput="this.setCustomValidity('')" autocomplete="new-password"><br>
+                name="form-pass" required maxlength="20" oninvalid="this.setCustomValidity('Ingrese su contraseña')"
+                oninput="this.setCustomValidity('')" autocomplete="new-password"><br>
 
         </form>
         <br>
         <a href="./index.html">ya tengo cuenta</a>
     </div>
-    
-    <button class="nex round" onclick="openPg('aula-create-first-scnd');">Siguiente   <div class="rippleJS"></div></button>
+    <div class="btbarcon">
+        <button class="nex round" onclick="openPg('aula-create-first-scnd');">Siguiente <div class="rippleJS">
+            </div></button>
+    </div>
+
 </div>
 
 <style>
-    .forms{
+    .forms {
         position: absolute;
         top: 25%;
         left: 5%;
@@ -40,27 +43,31 @@
         box-shadow: 2px 3px 4px -1px #00000017;
         padding: 24px;
     }
-    .nex{
+
+    .nex {
         position: fixed;
         right: 24px;
         bottom: 16px;
     }
-    .bak{
+
+    .bak {
         position: fixed;
         left: 24px;
         bottom: 16px;
         background: var(--contrast, var(--back-n));
         color: var(--color-pri, var(--color-n));
         border: var(--color-pri, var(--color-n)) 1px solid;
-        
+
     }
-    .titpri{
+
+    .titpri {
         position: absolute;
         top: calc(15% + 8px);
         width: 100%;
         text-align: center;
     }
-    .logo{
+
+    .logo {
         position: absolute;
         background-image: url('../lib/img/Asset_192.png');
         height: 100px;
@@ -69,8 +76,28 @@
         left: calc(50% - 50px);
         background-size: cover;
     }
+    @media(max-height:600px) {
+        .forms {
+            top: calc(50% - 180.5px) !important;
+        }
+
+        .mlogo img {
+            opacity: 0;
+        }
+
+        .btbarcon {
+            display: none !important;
+        }
+
+        .titpri {
+            display: none !important
+        }
+        .logo {
+            display: none !important
+        }
+    }
 </style>
 
 <script>
-     app.input.format();
+    app.input.format();
 </script>

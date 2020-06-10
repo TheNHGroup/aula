@@ -1,7 +1,7 @@
 <pagetitle hidden>LOGIN</pagetitle>
 
-<div class="controls">
-    <button class="to-right" onclick="$('#logformbtn').click()">
+<div class="btbarcon">
+    <button class="nex round" onclick="$('#logformbtn').click()">
         <div class="rippleJS"></div>Siguiente
     </button>
 </div>
@@ -11,12 +11,12 @@
     <span class="high">Sesión</span>
 </h1>
 
-<div class="mlogodd">
+<div class="forms">
     <form name="form" id="logform" onsubmit="app.login.in(event)">
-        <input class="ainp" type="text" placeholder="Usuario" autocomplete="off" style="background-color: var(--back);"
-            name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese su nombre de usuario')"
-            oninput="this.setCustomValidity('')">
-        <input class="ainp" type="password" placeholder="Contraseña" style="background-color: var(--back);"
+        <input class="ainp" type="text" placeholder="Usuario" autocomplete="off"
+            style="background-color: var(--contrast);" name="form-name" required maxlength="100"
+            oninvalid="this.setCustomValidity('Ingrese su nombre de usuario')" oninput="this.setCustomValidity('')">
+        <input class="ainp" type="password" placeholder="Contraseña" style="background-color: var(--contrast);"
             name="form-pass" required maxlength="20" oninvalid="this.setCustomValidity('Ingrese su contraseña')"
             oninput="this.setCustomValidity('')" autocomplete="new-password">
         <button id="logformbtn" type="submit" hidden></button>
@@ -24,15 +24,85 @@
 </div>
 <script>
     $(() => {
-      
+
         app.input.format();
         setTimeout(() => {
             $('.mlogo').addClass('cardi ');
             $('#logform').css('opacity', '1');
-            $('.controls').css({ 'display': 'block' })
+          
             setTimeout(() => {
                 $('#ainput0').focus()
             }, 400)
-        }, 1000)
+        }, 0)
     })
 </script>
+<style>
+    .forms {
+        position: absolute;
+        top: 55%;
+        left: 5%;
+        width: 80%;
+        border-radius: 10px;
+        background-color: var(--contrast, var(--back-n));
+        box-shadow: 2px 3px 4px -1px #00000017;
+        padding: 24px;
+    }
+
+    .nex {
+        position: fixed;
+        right: 24px;
+        bottom: 16px;
+        left: auto;
+    }
+
+    .bak {
+        position: fixed;
+        left: 24px;
+        bottom: 16px;
+        background: var(--contrast, var(--back-n));
+        color: var(--color-pri, var(--color-n));
+        border: var(--color-pri, var(--color-n)) 1px solid;
+
+    }
+
+    .titpri {
+        position: absolute;
+        top: calc(15% + 8px);
+        width: 100%;
+        text-align: center;
+    }
+
+    .logo {
+        position: absolute;
+        background-image: url('../lib/img/Asset_192.png');
+        height: 100px;
+        width: 100px;
+        top: 30px;
+        left: calc(50% - 50px);
+        background-size: cover;
+    }
+
+    #logform {
+        top: calc(50% - 20px);
+        opacity: 0;
+        transition: var(--transition);
+    }
+
+    @media(max-height:500px) {
+        .forms {
+            top: calc(50% - 50.5px) !important;
+        }
+
+        .mlogo img {
+            opacity: 0;
+        }
+
+        .btbarcon {
+            display: none !important;
+        }
+
+        h1 {
+            display: none !important
+        }
+    }
+</style>
