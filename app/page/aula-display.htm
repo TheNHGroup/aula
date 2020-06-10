@@ -1,0 +1,44 @@
+<div class="page">
+    <div class="navbar big">
+        <button class="backbtn" style="float: left;" onclick="history.back();window.navigator.vibrate(50)"><svg
+                style="width: 24px;" viewBox="0 0 24 24">
+                <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+            </svg>
+            <div class="rippleJS"></div>
+        </button>
+        <div class="title">Opciones</div>
+    </div>
+    <div class="card menu grande">
+        <ul class="ulmenuop">
+            <li onclick="installapp()" id="liAppInst" style="display: none;"> <div class="rippleJS"></div>Instalar App</li>
+            <li onclick="openPg('settings-theme');">
+                <div class="rippleJS"></div>Diseño
+            </li>
+            <li onclick="openPg('settings-sync');">
+                <div class="rippleJS"></div>Mis datos
+            </li>
+            <li onclick="openPg('settings-tickets');">
+                <div class="rippleJS"></div>Notificaciones
+            </li>
+            <li onclick="window.navigator.vibrate(50);app.login.out()">
+                <div class="rippleJS"></div>Cerrar sesión
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(() => {
+            if (installable) {
+                $('#liAppInst')[0].style.display = 'block';
+            }
+
+            var thisPage = $('#settings');
+            thisPage[0].onscroll = () => {
+                if (thisPage[0].scrollTop <= 45) {
+                    thisPage.find('.navbar').addClass("big");
+                } else {
+                    thisPage.find('.navbar').removeClass("big");
+                }
+            };
+        })
+    </script>
+</div>

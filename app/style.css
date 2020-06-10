@@ -3,12 +3,12 @@ html {
     --color-n: #ebebeb;
     --contrast-n: #333333;
     --back-n: #3b3b3b;
-    --color-pri-n: #728FE1;
+    --color-pri-n: #9B59B6;
 }
 
 .color-day {
-    --color-pri-dark: #728FE1;
-    --color-pri: #728FE1;
+    --color-pri-dark: #9B59B6;
+    --color-pri: #9B59B6;
     --color: #343434;
     --gray: #595959;
     --contrast: #fff;
@@ -79,7 +79,8 @@ body {
     border-radius: 8px;
     top: 5%;
     margin-bottom: 16px;
-    border: solid 1px #00000040;
+    border: solid 1px #0000000a;
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.20));
 }
 
 .content {
@@ -93,8 +94,8 @@ body {
 .page .card.menu {
     height: auto;
     padding: 18px 0 18px 0;
-    filter: none !important;
-    border: solid 1px #00000040;
+    border: solid 1px #0000001a;
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.116));
 } 
 
 .page .card.menu.grande {
@@ -116,7 +117,7 @@ body {
     height: 56px;
     z-index: 2;
     box-shadow: none;
-    background-color: var(--color-pri, var(--color-pri-n));
+    background-color: var(--back, var(--back-n));
     transition: var(--transition);
     transition: height 150ms, background-color 0ms;
 }
@@ -130,7 +131,7 @@ body {
     top: 15px;
     left: 56px;
     transform: none;
-    color: #fff;
+    color: var(--color-pri-n);
     text-align: left;
     font-weight: 100;
     font-size: 20px;
@@ -166,26 +167,13 @@ body {
     padding: 8px;
     border-radius: 50px;
     padding-top: 8px;
-    fill: #fff;
-    color: #fff;
+    fill: var(--color-pri-n);
+    color: var(--color-pri-n);
     outline: none;
     margin: 6px 0 0 8px;
     z-index: -1;
 }
 
-.circle {
-    position: absolute;
-    top: -85px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    height: 287px;
-    width: 116%;
-    background-color: var(--color-pri, var(--color-pri-n));
-    border-radius: 50%;
-    z-index: 0;
-}
-
-/*LOGIN PAGE*/
 
 /* USER INFO CHIP */
 
@@ -196,32 +184,27 @@ body {
     min-width: 44px;
     border-radius: 22px;
     top: 6px;
-    left: 8px;
+    right: 20px;
     transition: var(--transition);
     overflow: hidden;
     user-select: none;
     font-weight: 100;
     transform: none;
-    color: #fff;
-}
-
-.navbar .chip.big {
-    transform: scale(1.2) translate(40px, 40px) !important;
+    color: var(--color);
+    background-color:var(--back);
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.062));
 }
 
 .navbar .chip .username {
     position: relative;
     text-align: center;
-    margin-left: 48px;
-    margin-top: -27px;
-    margin-right: 12px;
-    font-size: 14px;
+    margin-left: 12px;
+    margin-top: 13px;
+    margin-right: 48px;
+    font-size: 16px;
     transition: var(--transition);
 }
 
-.navbar .chip.big .username {
-    transform: translate(0, -6px);
-}
 
 .navbar .chip .status {
     position: relative;
@@ -232,19 +215,18 @@ body {
     opacity: 0;
 }
 
-.navbar .chip.big .status {
-    opacity: 1;
-}
 
 .navbar .chip .img {
     background-color: rgba(0, 0, 0, 0.20);
     background-size: cover;
     background-position: center;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    margin-top: 2px;
-    margin-left: 2px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    
 }
 
 /*CONTROLS*/
@@ -583,7 +565,7 @@ position: relative;
 }
 
 .menu_principal hr{
-    border: #7e7e7e44 0.5px solid;
+    border: #7e7e7e25 0.5px solid;
     margin: 10px 20px 10px 20px;
 }
 

@@ -1,7 +1,7 @@
 body {
     color: white;
     margin: 0;
-    background-color: #728FE1;
+    background-color: #9B59B6;
     overflow: hidden;
     overflow-y: auto;
     font-family: NHFont;
@@ -15,7 +15,7 @@ body {
     top: 0;
     z-index: 3;
     box-shadow: none;
-    background-color: #728FE1;
+    background-color: #9B59B6;
     transition: ease-in 150ms;
 }
 
@@ -85,7 +85,7 @@ button {
 
 button.alm {
     margin-right: 10px;
-    color: #728FE1;
+    color: #9B59B6;
     border: #fff 1px solid;
     background-color: #fff;
 }
@@ -94,7 +94,7 @@ button.prf {
     margin-left: 10px;
     color: rgb(255, 255, 255);
     border: #fff 1px solid;
-    background-color: #728FE1;
+    background-color: #9B59B6;
 }
 
 @media(max-width:460px) {
