@@ -134,8 +134,6 @@ var NHSW = {
                     '.' + '/404.html',
                     '.' + '/font.css',
                     '.' + '/lib/img/',
-                    '.' + '/lib/js/jquery.min.js',
-                    '.' + '/lib/js/ripple.js',
 
                 ]);
             }));

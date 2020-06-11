@@ -63,11 +63,11 @@ app.state = {
         history.replaceState(data, title, url);
     },
     back: (e) => {
-        if (e.state.data.id == 'page/login.html') {
+        if (e.state.data.id == 'page/login.htm') {
             if (!app.user.actual()) {
                 goTo(e.state.data)
             }
-        } else if (e.state.data.id == 'page/start.html') {
+        } else if (e.state.data.id == 'page/start.htm') {
             volver(JSON.parse(session('lastState')).id);
             session('lastState', '');
         } else {

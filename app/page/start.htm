@@ -1,4 +1,4 @@
-<pagetitle hidden>AULA app</pagetitle>
+<pagetitle hidden>AULA</pagetitle>
 <div class="content">
     <div class="page" style="overflow-x: hidden;">
         <div class="navbar" id="navbar">
@@ -43,21 +43,8 @@
     var d = new Date();
     themize()
 
-    // IFs INICIALES//
-    if (!local('actualuser') || local('actualuser') == '') {
-        goTo({ type: 'page', id: 'page/login.htm' })
-        
-    } else {
-        fetch('https://aula-7e215.firebaseio.com/users/' + app.user.actual() + '.json').then(x => {
-            x.json().then(act => {
-                    $('#username').html(act.prefname) 
 
-                local('user', JSON.stringify(act))
 
-                themize()
-            })
-        })
-    }
 
     function themize() {
         (JSON.parse(local('user')).theme.shadows == 'on') ? $('html').addClass('amazing') : $('html').removeClass('amazing');
@@ -68,46 +55,32 @@
         }
     }
 
-    // EVENTOS //
-
-    $('.btnmarcar').on('click', async (e) => {
-
-
-
-        /*
-                navigator.serviceWorker.ready.then(function (registration) {
-                    registration.showNotification('AULA', {
-                        body: 'notificacion',
-                        // image: './lib/img/sssss',
-                        icon: './lib/img/ssssss',
-                        badge: './'
-                    });
-                });*/
-    })
 
 
 
     // ONLOADED //
     $(() => {
+        // IFs INICIALES//
         if (installable) {
             $('#installpwa')[0].style.display = 'block';
         }
-        /*  fetch('https://thenhgroup.000webhostapp.com/uploads/' + app.user.actual() + '_avatar.json', { cache: 'no-store' })
-              .then(response => {
-                  response.json().then(response => {
-                      $('#userchipimg').css({ "background-image": "url(" + response.data + ")" })
-                      local('user_img', response.data)
-                  }).catch(err => {
-                      fetch('https://thenhgroup.000webhostapp.com/uploads/noone_avatar.json', { cache: 'no-store' })
-                          .then(response => {
-                              response.json().then(response => {
-                                  $('#userchipimg').css({ "background-image": "url(" + response.data + ")" })
-                                  local('user_img', response.data)
-                              })
-                          })
-                  })
-              })*/
+
+        if (!local('actualuser') || local('actualuser') == '') {
+            goTo({ type: 'page', id: 'page/login.htm' })
+
+        } else {
+            fetch('https://aula-7e215.firebaseio.com/users/' + app.user.actual() + '.json').then(x => {
+                x.json().then(act => {
+                    $('#username').html(act.prefname)
+
+                    local('user', JSON.stringify(act))
+
+                    themize()
+                })
+            })
+        }
     })
+
 
     function installapp(e) {
         deferredPrompt.prompt();
@@ -126,7 +99,6 @@
                 }
             });
     }
-//http://127.0.0.1:5501/app/index.html?cGFnZS9zdGFydC5odG0=
 </script>
 
 <style>
