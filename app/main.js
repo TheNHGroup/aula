@@ -1,24 +1,21 @@
 
 var installable = false;
 
-/*if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js').then(registration => {
             if (registration.installing) {
-                console.log('1')
                 serviceWorker = registration.installing;
             } else if (registration.waiting) {
-                console.log('2')
                 serviceWorker = registration.waiting;
             } else if (registration.active) {
-                console.log('3')
                 serviceWorker = registration.active;
             }
         },  (err)=> {
             console.log('ServiceWorker registration failed: ', err);
         })
     });
-}*/
+}
 
 $(async () => {
     if (!window.location.search) {

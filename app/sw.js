@@ -4,7 +4,7 @@ en el almacenamiento del dispositivo para que se pueda acceder
 sin conexion a la app. (por ahora solo mostrará pantalla Ofline.html)
 */
 
-var vCache = false, appVer = 'beta 0.3';
+var vCache = false, appVer = 'beta 0.1';
 
 (async () => {
     var nativeAddAll = Cache.prototype.addAll;
@@ -120,7 +120,7 @@ var NHSW = {
                         if (client.frameType == "top-level" && 'focus' in client) {
                             if (vCache) {
                                 if (client.url.split('?')[1] != 'cGFnZS9sb2dpbi5odG0=') {
-                                    client.navigate('./?cGFnZS91cGRhdGVkLmh0bWw=')
+                                    client.navigate('./')
                                 }
                             } else {
                                 client.navigate('./')
@@ -164,10 +164,10 @@ self.onnotificationclick = e => {
                 var client = clientList[i];
                 if (client.frameType == "top-level" && 'focus' in client)
                     client.focus()
-                return client.navigate('./actualizado.html')
+                return client.navigate('./index.html')
             }
             if (clients.openWindow)
-                return clients.openWindow('./actualizado.html');
+                return clients.openWindow('./index.html');
         } else {
             //si es una notificación normal.. entonces
             for (var i = 0; i < clientList.length; i++) {
