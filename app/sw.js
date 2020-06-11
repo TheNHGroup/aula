@@ -119,11 +119,11 @@ var NHSW = {
                         var client = clientList[i];
                         if (client.frameType == "top-level" && 'focus' in client) {
                             if (vCache) {
-                                if (client.url.split('?')[1] != 'cGFnZS9sb2dpbi5odG1s') {
+                                if (client.url.split('?')[1] != 'cGFnZS9sb2dpbi5odG0=') {
                                     client.navigate('./?cGFnZS91cGRhdGVkLmh0bWw=')
                                 }
                             } else {
-                                client.navigate('./?cGFnZS9maXJzdExvb2suaHRt')
+                                client.navigate('./')
                             }
                         }
                     }
@@ -131,20 +131,12 @@ var NHSW = {
 
                 return cache.addAll([
                     '.' + '/offline.html',
-                    '.' + '/lib/js/theme.js',
                     '.' + '/404.html',
-                    '.' + '/index.html',
                     '.' + '/font.css',
-                    '.' + '/style.css',
-                    '.' + '/main.js',
-                    '.' + '/state.js',
-                    '.' + '/lib/img/Recurso64.png',
-                    '.' + '/lib/img/Recurso192.png',
-                    '.' + '/lib/js/firebase.js',
+                    '.' + '/lib/img/',
                     '.' + '/lib/js/jquery.min.js',
                     '.' + '/lib/js/ripple.js',
-                    '.' + '/lib/js/Chart.min.js',
-                    '.' + '/page'
+
                 ]);
             }));
         e.waitUntil(self.clients.claim())
