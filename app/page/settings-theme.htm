@@ -1,0 +1,98 @@
+<div class="page">
+    <style>
+        #themeChoose {
+            float: right;
+            margin-right: 16px;
+            margin-top: -5px;
+            color: var(--color-pri, var(--color-pri-n)) !important;
+            border-color: var(--color-pri, var(--color-pri-n)) !important;
+        }
+    </style>
+    <div class="navbar">
+        <button class="backbtn" style="float: left;" onclick="history.back();window.navigator.vibrate(50)"><svg
+                style="width: 24px;" viewBox="0 0 24 24">
+                <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+            </svg>
+            <div class="rippleJS"></div>
+        </button>
+        <div class="title">Diseño</div>
+    </div>
+    <div class="card menu grande mdc-elevation--z3">
+        <ul class="ulmenuop">
+            <li>
+                Tema de Color
+                <select id="themeChoose">
+                    <option value="default" style="color: #9B59B6;">Por defecto</option>
+                    <option value="yellow" style="color: #F1C40F;">Amarillo</option>
+                    <option value="red" style="color: #D32F2F;">Rojo</option>
+                    <option value="teal" style="color: #1ABC9C;">Teal</option>
+                    <option value="indigo" style="color: #303F9F;">Indigo</option>
+                </select>
+
+            </li>
+            <li id="nocmode">
+                <div class="rippleJS"></div>Modo nocturno
+            </li>
+        </ul>
+    </div>
+    <script>
+        act = JSON.parse(local('user'));
+        act.theme.night = (act.theme.night) ? act.theme.night : 'off';
+        act.theme.color = (act.theme.color) ? act.theme.color : 'default';
+
+        $(() => {
+            $('#themeChoose').val(act.theme.color);
+            var thisPage = $('#settings-diseno');
+            thisPage[0].onscroll = () => {
+                if (thisPage[0].scrollTop <= 45) {
+                    thisPage.find('.navbar').addClass("big");
+                } else {
+                    thisPage.find('.navbar').removeClass("big");
+                }
+            };
+        })
+
+
+        $('#nocmode').on('click', () => {
+            window.navigator.vibrate(50)
+            if ($('html').hasClass('color-day')) {
+                $('html').removeClass('color-day')
+                $('html').css(theme[act.theme.color].night);
+                $('html').css({ '--color-pri': '', '--color-pri-dark': '' });
+                act.theme.night = 'on'
+                local('user', JSON.stringify(act))
+                $('#theme')[0].content = theme[act.theme.color].ncolor;
+            } else {
+                $('html').addClass('color-day')
+                $('html').css(theme[act.theme.color].day)
+                act.theme.night = 'off'
+                local('user', JSON.stringify(act))
+                $('#theme')[0].content = theme[act.theme.color].dcolor;
+            }
+            fetch('https://meraki-userdata.firebaseio.com/users/' + app.user.actual() + '/theme/night.json', {
+                method: 'PUT',
+                body: JSON.stringify(act.theme.night)
+            })
+        })
+        $('#themeChoose').change(e => {
+            e = $('#themeChoose').val();
+            act.theme.color = e;
+            local('user', JSON.stringify(act))
+            if (act.theme.night == 'off') {
+                $('html').addClass('color-day');
+                $('html').css(theme[e].day)
+                $('#theme')[0].content = theme[e].dcolor;
+            } else {
+                $('html').removeClass('color-day');
+                $('html').css(theme[e].night)
+                $('#theme')[0].content = theme[e].ncolor;
+            }
+            fetch('https://meraki-userdata.firebaseio.com/users/' + app.user.actual() + '/theme/color.json', {
+                method: 'PUT',
+                body: JSON.stringify(act.theme.color)
+            })
+        })
+
+    </script>
+
+</div>
