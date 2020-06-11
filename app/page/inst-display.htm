@@ -8,30 +8,33 @@
         </button>
         <div class="title">Instituciones</div>
     </div>
-    <div class="card menu grande">
+    <div class="card  grande">
         <ul class="ulmenuop">
-            <li onclick="installapp()" id="liAppInst" style="display: none;"> <div class="rippleJS"></div>Instalar App</li>
-            <li onclick="openPg('settings-theme');">
-                <div class="rippleJS"></div>Diseño
-            </li>
-            <li onclick="openPg('settings-sync');">
-                <div class="rippleJS"></div>Mis datos
-            </li>
-            <li onclick="openPg('settings-tickets');">
-                <div class="rippleJS"></div>Notificaciones
-            </li>
-            <li onclick="window.navigator.vibrate(50);app.login.out()">
-                <div class="rippleJS"></div>Cerrar sesión
-            </li>
+            aqui va la info de la intitucion
         </ul>
     </div>
+    <div class="card  grande">
+        <ul class="ulmenuop">
+            aqui va la info de la intitucion
+        </ul>
+    </div>
+    <div class="card  grande">
+        <ul class="ulmenuop">
+            aqui va la info de la intitucion
+        </ul>
+    </div>
+    <div class="card  grande">
+        <ul class="ulmenuop">
+            aqui va la info de la intitucion
+        </ul>
+    </div> 
     <script>
         $(() => {
             if (installable) {
                 $('#liAppInst')[0].style.display = 'block';
             }
 
-            var thisPage = $('#settings');
+            var thisPage = $('#inst-display');
             thisPage[0].onscroll = () => {
                 if (thisPage[0].scrollTop <= 45) {
                     thisPage.find('.navbar').addClass("big");

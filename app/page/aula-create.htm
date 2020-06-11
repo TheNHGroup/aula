@@ -1,2 +1,24 @@
-hola estas en otra
-<button onclick="history.back();window.navigator.vibrate(50)">atras</button>
+<div class="page">
+    <div class="logo"></div>
+    <p class="titpri">Crear aula virtual</p>
+<div class="forms">
+    <form onsubmit="app.aula.new(event)">
+        <input class="ainp" type="text" placeholder="Nombre del aula" autocomplete="off" style="background-color: var(--contrast);"
+        name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese nombre del aula')"
+        oninput="this.setCustomValidity('')">
+        <input class="ainp" type="text" placeholder="Institución" autocomplete="off" style="background-color: var(--contrast);"
+        name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese institucón')"
+        oninput="this.setCustomValidity('')">
+        <input class="ainp" type="number" placeholder="Limite de alumnos" autocomplete="off" style="background-color: var(--contrast);"
+        name="form-name" required maxlength="100" oninvalid="this.setCustomValidity('Ingrese un limite, luego se podrá modificar')"
+        oninput="this.setCustomValidity('')">
+<input type="submit" id="logformbtn" hidden>
+    </form>
+</div>
+    <button class="nex round" onclick="$('#logformbtn').click()">Siguiente   <div class="rippleJS"></div></button>
+    <button class="bak round" onclick="history.back();window.navigator.vibrate(50)">Volver   <div class="rippleJS"></div></button>
+</div>
+
+<script>
+     app.input.format();
+</script>
