@@ -8,19 +8,51 @@
         </button>
         <div class="title">Alumnos</div>
     </div>
-    <div class="card menu grande">
-        <ul class="ulmenuop">
-            <li onclick="installapp()" id="liAppInst" >
-                <div class="rippleJS"></div>Instalar App
-    
-        </ul>
-    </div>
 
-    <div class="card menu grande">
-        <ul class="ulmenuop">
-            <li onclick="installapp()" id="liAppInst">
-                <div class="rippleJS"></div>Instalar App
-    
+
+    <div class="card menu">
+        <ul class="menu_principal">
+            <li onclick="openPg('aula-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
+            <hr>
+            <li onclick="openPg('alm-display');">Alumno</li>
         </ul>
     </div>
     <script>
@@ -33,8 +65,10 @@
             thisPage[0].onscroll = () => {
                 if (thisPage[0].scrollTop <= 45) {
                     thisPage.find('.navbar').addClass("big");
+                    thisPage.find('.navbar').removeClass("shadd");
                 } else {
                     thisPage.find('.navbar').removeClass("big");
+                    thisPage.find('.navbar').addClass("shadd");
                 }
             };
         })
