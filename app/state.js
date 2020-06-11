@@ -18,9 +18,9 @@ $(() => {
 
 function decideNow() {
     if (!app.user.actual()) {
-        goTo({ type: 'page', id: 'page/login.html' })
+        goTo({ type: 'page', id: 'page/login.htm' })
     } else {
-        goTo({ type: 'page', id: 'page/start.html' })
+        goTo({ type: 'page', id: 'page/start.htm' })
     }
 }
 
@@ -46,7 +46,6 @@ const goTo = (data) => {
                 document.title = $('pagetitle').html()
                 app.state.replace({ data: data }, data.id, '?' + btoa(data.id))
                 $('app').show('fade', 100)
-                console.log(page)
             })
         })
 

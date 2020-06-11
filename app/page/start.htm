@@ -4,7 +4,7 @@
         <div class="navbar" id="navbar">
             <div class="logo"></div>
             <div class="chip" id="userchip" onclick=" window.navigator.vibrate(50); openPg('user-me-info');">
-                <div class="username" id="username">Nombre del profe</div>
+                <div class="username" id="username"></div>
                 <div class="img" id="userchipimg"></div>
                 <div class="status" id="userstatus"></div>
                 <div class="rippleJS"></div>
@@ -45,18 +45,13 @@
 
     // IFs INICIALES//
     if (!local('actualuser') || local('actualuser') == '') {
-        goTo({ type: 'page', id: 'page/login.html' })
+        goTo({ type: 'page', id: 'page/login.htm' })
+        
     } else {
-        fetch('https://meraki-userdata.firebaseio.com/users/' + app.user.actual() + '.json').then(x => {
+        fetch('https://aula-7e215.firebaseio.com/users/' + app.user.actual() + '.json').then(x => {
             x.json().then(act => {
-                if (act.prefname) {
-                    $('#username').html(act.prefname)
-                } else {
+                    $('#username').html(act.prefname) 
 
-                }
-
-                $('#userstatus').html(act.active ? 'Activo' : 'Ausente');
-                $('#contra-first')[0].style.display = (act.pass == '1234') ? 'block' : 'none';
                 local('user', JSON.stringify(act))
 
                 themize()
@@ -65,15 +60,11 @@
     }
 
     function themize() {
-        var tth = (JSON.parse(local('user')).theme) ? JSON.parse(local('user')).theme.color : 'default';
-        if (JSON.parse(local('user')).theme.night == 'off' || !JSON.parse(local('user')).theme) {
+        (JSON.parse(local('user')).theme.shadows == 'on') ? $('html').addClass('amazing') : $('html').removeClass('amazing');
+        if (JSON.parse(local('user')).theme.night == 'off') {
             $('html').addClass('color-day');
-            $('html').css(theme[tth].day)
-            $('#theme')[0].content = theme[tth].dcolor;
         } else {
             $('html').removeClass('color-day');
-            $('html').css(theme[tth].night)
-            $('#theme')[0].content = theme[tth].ncolor;
         }
     }
 
@@ -147,6 +138,7 @@
         top: 3px;
         left: 20px;
         background-size: cover;
+        filter: brightness(3);
     }
 
     .maintit {

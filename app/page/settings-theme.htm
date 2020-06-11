@@ -19,30 +19,46 @@
     </div>
     <div class="card menu grande mdc-elevation--z3">
         <ul class="ulmenuop">
-            <li>
-                Tema de Color
-                <select id="themeChoose">
-                    <option value="default" style="color: #9B59B6;">Por defecto</option>
-                    <option value="yellow" style="color: #F1C40F;">Amarillo</option>
-                    <option value="red" style="color: #D32F2F;">Rojo</option>
-                    <option value="teal" style="color: #1ABC9C;">Teal</option>
-                    <option value="indigo" style="color: #303F9F;">Indigo</option>
-                </select>
+            <li id="shadowmode">
+                <div class="rippleJS"></div> Sombreado
+                <label class="switch">
+                    <input type="checkbox" id="shadcheck">
+                    <span class="slider round"></span>
+                </label>
 
             </li>
             <li id="nocmode">
                 <div class="rippleJS"></div>Modo nocturno
+
+                <label class="switch">
+                    <input type="checkbox" id="nocheck">
+                    <span class="slider round"></span>
+                </label>
             </li>
+
+            <dark-mode-toggle legend="Theme Switcher" appearance="switch" dark="Dark" light="Light"
+                remember="Remember this"></dark-mode-toggle>
         </ul>
     </div>
     <script>
-        act = JSON.parse(local('user'));
+         act = JSON.parse(local('user'));
         act.theme.night = (act.theme.night) ? act.theme.night : 'off';
-        act.theme.color = (act.theme.color) ? act.theme.color : 'default';
+        act.theme.shadows = (act.theme.shadows) ? act.theme.shadows : 'off';
+
+        if (act.theme.shadows == 'on') {
+            $('#shadcheck')[0].checked = true
+        } else {
+            $('#shadcheck')[0].checked = false
+        }
+        if (act.theme.night == 'off') {
+            $('#nocheck')[0].checked = false
+        } else {
+            $('#nocheck')[0].checked = true
+        }
+       
 
         $(() => {
-            $('#themeChoose').val(act.theme.color);
-            var thisPage = $('#settings-diseno');
+            var thisPage = $('#settings-theme');
             thisPage[0].onscroll = () => {
                 if (thisPage[0].scrollTop <= 45) {
                     thisPage.find('.navbar').addClass("big");
@@ -55,44 +71,128 @@
 
         $('#nocmode').on('click', () => {
             window.navigator.vibrate(50)
-            if ($('html').hasClass('color-day')) {
+            if ($('html').hasClass('color-day') && !$('#nocheck')[0].checked) {
+                $('#nocheck')[0].checked = true
                 $('html').removeClass('color-day')
-                $('html').css(theme[act.theme.color].night);
-                $('html').css({ '--color-pri': '', '--color-pri-dark': '' });
                 act.theme.night = 'on'
                 local('user', JSON.stringify(act))
-                $('#theme')[0].content = theme[act.theme.color].ncolor;
             } else {
+                $('#nocheck')[0].checked = false
                 $('html').addClass('color-day')
-                $('html').css(theme[act.theme.color].day)
                 act.theme.night = 'off'
                 local('user', JSON.stringify(act))
-                $('#theme')[0].content = theme[act.theme.color].dcolor;
             }
-            fetch('https://meraki-userdata.firebaseio.com/users/' + app.user.actual() + '/theme/night.json', {
+            fetch('https://aula-7e215.firebaseio.com/users/' + app.user.actual() + '/theme/night.json', {
                 method: 'PUT',
                 body: JSON.stringify(act.theme.night)
             })
+
+            /* if ($('html').hasClass('color-day')) {
+                 $('html').removeClass('color-day')
+                 $('html').css(theme[act.theme.color].night);
+                 $('html').css({ '--color-pri': '', '--color-pri-dark': '' });
+                 act.theme.night = 'on'
+                 local('user', JSON.stringify(act))
+                 $('#theme')[0].content = theme[act.theme.color].ncolor;
+             } else {
+                 $('html').addClass('color-day')
+                 $('html').css(theme[act.theme.color].day)
+                 act.theme.night = 'off'
+                 local('user', JSON.stringify(act))
+                 $('#theme')[0].content = theme[act.theme.color].dcolor;
+             }
+             fetch('https://aula-7e215.firebaseio.com/users/' + app.user.actual() + '/theme/night.json', {
+                 method: 'PUT',
+                 body: JSON.stringify(act.theme.night)
+             })*/
         })
-        $('#themeChoose').change(e => {
-            e = $('#themeChoose').val();
-            act.theme.color = e;
-            local('user', JSON.stringify(act))
-            if (act.theme.night == 'off') {
-                $('html').addClass('color-day');
-                $('html').css(theme[e].day)
-                $('#theme')[0].content = theme[e].dcolor;
+
+        $('#shadowmode').on('click', () => {
+            window.navigator.vibrate(50)
+            if ($('html').hasClass('amazing') && $('#shadcheck')[0].checked) {
+                $('html').removeClass('amazing')
+                $('#shadcheck')[0].checked = false;
+                act.theme.shadows = 'off'
+                local('user', JSON.stringify(act))
             } else {
-                $('html').removeClass('color-day');
-                $('html').css(theme[e].night)
-                $('#theme')[0].content = theme[e].ncolor;
+                $('html').addClass('amazing')
+                $('#shadcheck')[0].checked = true;
+                act.theme.shadows = 'on'
+                local('user', JSON.stringify(act))
             }
-            fetch('https://meraki-userdata.firebaseio.com/users/' + app.user.actual() + '/theme/color.json', {
+            fetch('https://aula-7e215.firebaseio.com/users/' + app.user.actual() + '/theme/shadows.json', {
                 method: 'PUT',
-                body: JSON.stringify(act.theme.color)
+                body: JSON.stringify(act.theme.shadows)
             })
         })
 
     </script>
 
 </div>
+
+<style>
+    .switch {
+        float: right;
+        margin-right: 31px;
+        position: relative;
+        width: 43px;
+        height: 8px;
+        outline: none;
+        margin-top: 6px;
+        z-index: -1;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: -1px;
+        bottom: -6px;
+        background-color: var(--back, var(--color-pri-dark));
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked+.slider {
+        background-color: var(--color-pri, var(--color-pri-n));
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px var(--color-pri, var(--color-pri-n));
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+</style>

@@ -4,15 +4,20 @@ html {
     --contrast-n: #333333;
     --back-n: #3b3b3b;
     --color-pri-n: #9B59B6;
+    --color-pri-dark: rgb(110, 48, 134);
 }
 
 .color-day {
-    --color-pri-dark: rgba(156, 89, 182, 0.267);
+    --color-pri-dark: rgba(110, 48, 134, 0.425);
     --color-pri: #9B59B6;
     --color: #343434;
     --gray: #595959;
     --contrast: #fff;
     --back: #F1F1F1;
+}
+
+.amazing{
+    --shads: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.116))!important;
 }
 
 body {
@@ -21,6 +26,7 @@ body {
     font-family: NHFont;
     background-color: var(--back, var(--contrast-n));
     color: var(--color, var( --color-n));
+    user-select: none;
 }
 /*UI STYLE*/
 
@@ -55,7 +61,7 @@ body {
     top: 5%;
     margin-bottom: 16px;
     border: solid 1px #0000001a;
-    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.116));
+    filter: var(--shads);
 }
 .page .card {
     position: relative;
@@ -65,7 +71,7 @@ body {
     top: 5%;
     margin-bottom: 16px;
     border: solid 1px #0000001a;
-    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.116));
+    filter: var(--shads);
 }
 
 .content {
@@ -80,7 +86,7 @@ body {
     height: auto;
     padding: 18px 0 18px 0;
     border: solid 1px #0000001a;
-    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.116));
+    filter: var(--shads);
 } 
 
 .page .card.menu.grande {
@@ -101,14 +107,14 @@ body {
     width: 100%;
     height: 56px;
     z-index: 2;
-    background-color: var(--back, var(--back-n));
+    background-color: var(--color-pri, var(--color-pri-n));
     transition: var(--transition);
     transition: height 150ms, background-color 0ms;
     border-bottom: solid 1px var(--color-pri-dark);
 }
 
 .navbar.shadd{
-    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.116)) !important;
+    filter: var(--shads);
 }
 
 .navbar.non {
@@ -120,7 +126,7 @@ body {
     top: 15px;
     left: 56px;
     transform: none;
-    color: var(--color-pri-n);
+    color: #fff;
     text-align: left;
     font-weight: 100;
     font-size: 20px;
@@ -157,8 +163,8 @@ body {
     padding: 8px;
     border-radius: 50px;
     padding-top: 8px;
-    fill: var(--color-pri-n);
-    color: var(--color-pri-n);
+    fill: #fff;
+    color: #fff;
     outline: none;
     margin: 6px 0 0 8px;
     z-index: -1;
@@ -180,9 +186,8 @@ body {
     user-select: none;
     font-weight: 100;
     transform: none;
-    color: var(--color);
-    background-color:var(--back);
-    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.062));
+    color: #fff;
+    background-color: var(--color-pri, var(--color-pri-n));
 }
 
 .navbar .chip .username {
