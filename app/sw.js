@@ -133,8 +133,7 @@ var NHSW = {
                     '.' + '/offline.html',
                     '.' + '/404.html',
                     '.' + '/font.css',
-                    '.' + '/lib/img/',
-
+                    '.' + '/lib/img/'
                 ]);
             }));
         e.waitUntil(self.clients.claim())

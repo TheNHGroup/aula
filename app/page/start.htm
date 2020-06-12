@@ -61,10 +61,7 @@
     // ONLOADED //
     $(() => {
         // IFs INICIALES//
-        if (installable) {
-            $('#installpwa')[0].style.display = 'block';
-        }
-
+      
         if (!local('actualuser') || local('actualuser') == '') {
             goTo({ type: 'page', id: 'page/login.htm' })
 
@@ -106,6 +103,13 @@
                 }
             });
     }
+    setTimeout(()=>{
+        if (installable) {
+            $('#installpwa')[0].style.display = 'block';
+        }
+    },1000)
+    
+
 </script>
 
 <style>
