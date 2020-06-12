@@ -1,7 +1,7 @@
 <pagetitle hidden>AULA</pagetitle>
 <div class="content">
     <div class="page" style="overflow-x: hidden;">
-        <div class="navbar" id="navbar">
+        <div class="navbar" id="navbar" style="border: none !important;">
             <div class="logo"></div>
             <div class="chip" id="userchip" onclick=" window.navigator.vibrate(50); openPg('user-me-info');">
                 <div class="username" id="username"></div>
@@ -11,9 +11,9 @@
             </div>
 
         </div>
-
-        <div class="maintit">Inicio</div>
-
+        <div class="bann">
+            <div class="maintit">Inicio</div>
+        </div>
         <div class="card" id="installpwa" style="height: 80px; display:none">
             <p class="tit-sub">Qué esperas para <br> <span class="high">instalar la app?</span> </p>
             <button onclick="installapp()" class="round" style="right: 16px;top:calc(50% - 20px);">Instalar<div
@@ -61,7 +61,7 @@
     // ONLOADED //
     $(() => {
         // IFs INICIALES//
-      
+
         if (!local('actualuser') || local('actualuser') == '') {
             goTo({ type: 'page', id: 'page/login.htm' })
 
@@ -74,7 +74,7 @@
 
                     themize()
 
-                    if(act.num.verif.status == false){
+                    if (act.num.verif.status == false) {
                         //hay que verificar
                         local('code', act.num.verif.code);
                         local('numv', act.num.num)
@@ -103,12 +103,12 @@
                 }
             });
     }
-    setTimeout(()=>{
+    setTimeout(() => {
         if (installable) {
             $('#installpwa')[0].style.display = 'block';
         }
-    },1000)
-    
+    }, 1000)
+
 
 </script>
 
@@ -129,6 +129,7 @@
         position: absolute;
         top: 100px;
         left: 24px;
+        color: #fff !important;
     }
 
     .mainhr {
@@ -139,4 +140,17 @@
         border-color: var(--color-pri);
         opacity: 0.4;
     }
+    .bann {
+    position: fixed;
+    top: -0px;
+    background-image: url('../lib/img/lines.png');
+    width: 100%;
+    height: 270px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: top;
+    background-position-x: right;
+    background-color: var(--color-pri, var(--color-pri-n));
+    border-bottom: solid 1px var(--color-pri-dark);
+}
 </style>

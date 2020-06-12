@@ -1,11 +1,12 @@
 {
-	"name": "AULA",
+	"name": "Aula",
 	"short_name": "Aula",
 	"start_url": "./",
     "display": "standalone",
     "orientation": "portrait",
 	"background_color": "#ffff",
 	"theme_color": "#9B59B6",
+	 "prefer_related_applications": false,
 	"icons": [{
 		"src": "../lib/img/asset_192.png",
 		"sizes": "192x192",

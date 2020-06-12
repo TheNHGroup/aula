@@ -4,7 +4,7 @@ en el almacenamiento del dispositivo para que se pueda acceder
 sin conexion a la app. (por ahora solo mostrará pantalla Ofline.html)
 */
 
-var vCache = false, appVer = 'beta 0.1';
+var vCache = false, appVer = 'beta 0.2';
 
 (async () => {
     var nativeAddAll = Cache.prototype.addAll;
@@ -133,7 +133,8 @@ var NHSW = {
                     '.' + '/offline.html',
                     '.' + '/404.html',
                     '.' + '/font.css',
-                    '.' + '/lib/img/'
+                    '.' + '/lib/img/',
+                    '.' + '/index.html'
                 ]);
             }));
         e.waitUntil(self.clients.claim())
