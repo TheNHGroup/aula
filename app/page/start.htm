@@ -66,7 +66,7 @@
             goTo({ type: 'page', id: 'page/login.htm' })
 
         } else {
-            fetch('https://aula-7e215.firebaseio.com/users/' + app.user.actual() + '.json').then(x => {
+            fetch('https://aula-7e215.firebaseio.com/users/' + app.user.actual() + '.json', { cache: 'no-store' }).then(x => {
                 x.json().then(act => {
                     $('#username').html(act.prefname)
 

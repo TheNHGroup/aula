@@ -6,7 +6,7 @@
             </svg>
             <div class="rippleJS"></div>
         </button>
-        <div class="title">Mis aulas</div>
+        <div class="title" id="aulati"></div>
     </div>
 
 
@@ -16,8 +16,7 @@
     </div>
     <script>
         $(() => {
-            actclases()
-            var thisPage = $('#aula-display');
+            var thisPage = $('#aula-open');
             thisPage[0].onscroll = () => {
                 if (thisPage[0].scrollTop <= 45) {
                     thisPage.find('.navbar').addClass("big");
@@ -25,22 +24,23 @@
                     thisPage.find('.navbar').removeClass("big");
                 }
             };
-        })
-
-        function actclases() {
-            fetch('https://aula-7e215.firebaseio.com/aulas/' + app.user.actual() + '.json', { cache: 'no-store' }).then(x => {
+            if(session('aulacontext')){
+                fetch('https://aula-7e215.firebaseio.com/aulas/' + app.user.actual() + '/' + session('aulacontext') + '.json', { cache: 'no-store' }).then(x => {
                 x.json().then(act => {
-                    acto = Object.keys(act);
-                    for (let i = 0; i < acto.length; i++) {
-                        $('#aula-display').find('.page').append('<div class="card  grande" onclick="openclass(\'' + acto + '\')"> <p class="titi">' + act[acto].name + '</p><hr class="hhrr"><ul class="ulmenuop claa"><li>alumnos <p class="toright">0</p></li><li>tareas <p class="toright">0</p></li><li>pruebas <p class="toright">0</p></li></ul> <div class="rippleJS"></div></div>')
-                    }
+                   
+                    $('#aulati').html(act.name)
+                    
+                    //$('#aulati').find('.page').append('<div class="card  grande" onclick="openclass(' + acto + ')"> <p class="titi">' + act[acto].name + '</p><hr class="hhrr"><ul class="ulmenuop claa"><li>alumnos <p class="toright">0</p></li><li>tareas <p class="toright">0</p></li><li>pruebas <p class="toright">0</p></li></ul> <div class="rippleJS"></div></div>')
                 })
             })
-        }
+            }
+            
+        })
 
-        function openclass(aula) {
-            session('aulacontext', aula);
-            openPg('aula-open');
+
+        function opentest(test) {
+            session('testcontext', test);
+            openPg('test-open');
         }
 
 

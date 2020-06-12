@@ -86,25 +86,6 @@
                 method: 'PUT',
                 body: JSON.stringify(act.theme.night)
             })
-
-            /* if ($('html').hasClass('color-day')) {
-                 $('html').removeClass('color-day')
-                 $('html').css(theme[act.theme.color].night);
-                 $('html').css({ '--color-pri': '', '--color-pri-dark': '' });
-                 act.theme.night = 'on'
-                 local('user', JSON.stringify(act))
-                 $('#theme')[0].content = theme[act.theme.color].ncolor;
-             } else {
-                 $('html').addClass('color-day')
-                 $('html').css(theme[act.theme.color].day)
-                 act.theme.night = 'off'
-                 local('user', JSON.stringify(act))
-                 $('#theme')[0].content = theme[act.theme.color].dcolor;
-             }
-             fetch('https://aula-7e215.firebaseio.com/users/' + app.user.actual() + '/theme/night.json', {
-                 method: 'PUT',
-                 body: JSON.stringify(act.theme.night)
-             })*/
         })
 
         $('#shadowmode').on('click', () => {
