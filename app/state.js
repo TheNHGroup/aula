@@ -46,6 +46,7 @@ const goTo = (data) => {
                 document.title = $('pagetitle').html()
                 app.state.replace({ data: data }, data.id, '?' + btoa(data.id))
                 $('app').show('fade', 100)
+                $('.loading').hide('fade', 200);
             })
         })
 

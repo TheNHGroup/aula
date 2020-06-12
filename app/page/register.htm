@@ -127,7 +127,7 @@
                             }
                         })
                     })
-                }else{
+                } else {
                     app.notif('La contraseña es muy corta')
                 }
             } else {
@@ -158,9 +158,15 @@
                                         method: 'PUT',
                                         body: JSON.stringify(act)
                                     }).then(() => {
-                                        local('numv', usrnum);
-                                        local('vuser', usrmail.toLowerCase().split('.').join('_').replace('@', '_').replace(' ', ''))
-                                        openPg('phone-validate-sending');
+                                        fetch('https://aula-7e215.firebaseio.com/aulas/' + usrmail.toLowerCase().split('.').join('_').replace('@', '_').replace(' ', '') + '.json', {
+                                            method: 'PUT',
+                                            body: JSON.stringify({ 'index': 0 })
+                                        }).then(() => {
+
+                                            local('numv', usrnum);
+                                            local('vuser', usrmail.toLowerCase().split('.').join('_').replace('@', '_').replace(' ', ''))
+                                            openPg('phone-validate-sending');
+                                        })
                                     })
                                 })
                             })
@@ -187,7 +193,12 @@
                         method: 'PUT',
                         body: JSON.stringify(act)
                     }).then(() => {
-                        window.location.replace('./index.html?cGFnZS9sb2dpbi5odG0=')
+                        fetch('https://aula-7e215.firebaseio.com/aulas/' + usrmail.toLowerCase().split('.').join('_').replace('@', '_').replace(' ', '') + '.json', {
+                            method: 'PUT',
+                            body: JSON.stringify({ 'index': 0 })
+                        }).then(() => {
+                            window.location.replace('./index.html?cGFnZS9sb2dpbi5odG0=')
+                        })
                     })
                 })
             })

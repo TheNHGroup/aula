@@ -10,9 +10,9 @@
     </div>
 
 
-    <div class="fab">
+    <div class="fab" onclick="openPg('aula-create-first-scnd');">
         <div class="rippleJS"></div>
-        <p>+ Nuevo</p>
+        <p>+ Aula</p>
     </div>
     <script>
         $(() => {
@@ -32,7 +32,12 @@
                 x.json().then(act => {
                     acto = Object.keys(act);
                     for (let i = 0; i < acto.length; i++) {
-                        $('#aula-display').find('.page').append('<div class="card  grande" onclick="openclass(\'' + acto[i] + '\')"> <p class="titi">' + act[acto[i]].name + '</p><hr class="hhrr"><ul class="ulmenuop claa"><li>alumnos <p class="toright">0</p></li><li>tareas <p class="toright">0</p></li><li>pruebas <p class="toright">0</p></li></ul> <div class="rippleJS"></div></div>')
+                        if (act[acto[i]].name) {
+                            $('#aula-display').find('.page').append('<div class="card  grande" onclick="openclass(\'' + acto[i] + '\')"> <p class="titi">' + act[acto[i]].name + '</p><hr class="hhrr"><ul class="ulmenuop claa"><li>alumnos <p class="toright">0</p></li><li>tareas <p class="toright">0</p></li><li>pruebas <p class="toright">0</p></li></ul> <div class="rippleJS"></div></div>')
+                        }
+                    }
+                    if (acto.length < 2) {
+                        $('#aula-display').find('.page').append('<div class="nadita">Crea tu primer aula!</div>')
                     }
                 })
             })
@@ -69,5 +74,15 @@
         top: -11px;
         right: 17px;
         position: absolute;
+    }
+
+    .nadita {
+        font-size: 23px;
+        position: absolute;
+        top: 199px;
+        text-align: center;
+        width: 100%;
+        opacity: .8;
+        color: var(--color, var(--color-n)) !important;
     }
 </style>

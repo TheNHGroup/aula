@@ -10,9 +10,9 @@
     </div>
 
 
-    <div class="fab">
+    <div class="fab" onclick=" openPg('tarea-create');">
         <div class="rippleJS"></div>
-        <p>+ Nuevo</p>
+        <p>+ Tarea</p>
     </div>
     <script>
         $(() => {
@@ -24,28 +24,69 @@
                     thisPage.find('.navbar').removeClass("big");
                 }
             };
-            if(session('aulacontext')){
+            if (session('aulacontext')) {
                 fetch('https://aula-7e215.firebaseio.com/aulas/' + app.user.actual() + '/' + session('aulacontext') + '.json', { cache: 'no-store' }).then(x => {
-                x.json().then(act => {
-                   
-                    $('#aulati').html(act.name)
-                    
-                    //$('#aulati').find('.page').append('<div class="card  grande" onclick="openclass(' + acto + ')"> <p class="titi">' + act[acto].name + '</p><hr class="hhrr"><ul class="ulmenuop claa"><li>alumnos <p class="toright">0</p></li><li>tareas <p class="toright">0</p></li><li>pruebas <p class="toright">0</p></li></ul> <div class="rippleJS"></div></div>')
-                })
-            })
-            }
-            
-        })
+                    x.json().then(act => {
 
+                        $('#aulati').html(act.name)
+
+                        fetch('https://aula-7e215.firebaseio.com/tareas/' + session('aulacontext') + '.json', { cache: 'no-store' }).then(x => {
+                            x.json().then(act => {
+                                acto = Object.keys(act);
+                                for (let i = 0; i < acto.length; i++) {
+                                    if (act[acto[i]].name) {
+                                        $('#aula-open').find('.page').append('<div class="card  grande" onclick="openclass(\'' + acto[i] + '\')"> <p class="titi">' + act[acto[i]].name + '</p><hr class="hhrr"><ul class="ulmenuop claa"><li>alumnos <p class="toright">0</p></li><li>tareas <p class="toright">0</p></li><li>pruebas <p class="toright">0</p></li></ul> <div class="rippleJS"></div></div>')
+                                    }
+                                }
+                                if (acto.length < 2) {
+                                    $('#aula-open').find('.page').append('<div class="nadita">Crea tu primer terea!</div>')
+                                    $('#aula-open').find('.page').append('<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>')
+                                    $('#aula-open').find('.page').append('<div class="card  grande"> <p class="titi">Opciones</p><hr class="hhrr"><ul class="ulmenuop"><li><div class="rippleJS"></div>Actualizar info</li><li style="color: #fe6e6e" onclick="aulaThisdel()"><div class="rippleJS"></div>Eliminar aula</li></ul></div>')
+                                    $('#aula-open').find('.page').append('<br><br><br><br><br>')
+                                }
+                            })
+                        })
+                        //$('#aulati').find('.page').append('<div class="card  grande" onclick="openclass(' + acto + ')"> <p class="titi">' + act[acto].name + '</p><hr class="hhrr"><ul class="ulmenuop claa"><li>alumnos <p class="toright">0</p></li><li>tareas <p class="toright">0</p></li><li>pruebas <p class="toright">0</p></li></ul> <div class="rippleJS"></div></div>')
+                    })
+                })
+            }
+        })
 
         function opentest(test) {
             session('testcontext', test);
             openPg('test-open');
         }
 
+        //if(acto.length < 2){
+        //$('#aula-display').find('.page').append('<div class="nadita">Crea tu primer aula!</div>')
+        //        }
 
-        //  var raan = Math.round((Math.pow(36, 6 + 1) - Math.random() * Math.pow(36, 6))).toString(36).slice(1);
- //console.log(raan)
+        function aulaThisdel() {
+            var seguroo = confirm('Seguro que quieres eliminar esta aula?');
+            if (seguroo) {
+                app.notif('Eliminando..');
+                fetch('https://aula-7e215.firebaseio.com/aulas/' + app.user.actual() + '/' + session('aulacontext') + '.json', {
+                    method: 'PUT',
+                    body: JSON.stringify({ 'index': null })
+
+                }).then(() => {
+                    fetch('https://aula-7e215.firebaseio.com/tareas/' + session('aulacontext') + '.json', {
+                        method: 'PUT',
+                        body: JSON.stringify({ 'index': null })
+
+                    }).then(() => {
+                        fetch('https://aula-7e215.firebaseio.com/alumnos/' + session('aulacontext') + '.json', {
+                            method: 'PUT',
+                            body: JSON.stringify({ 'index': null })
+
+                        }).then(() => {
+                            window.location.replace('./index.html');
+                        })
+                    })
+                })
+
+            }
+        }
     </script>
 </div>
 

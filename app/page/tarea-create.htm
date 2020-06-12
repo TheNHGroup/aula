@@ -6,7 +6,7 @@
             </svg>
             <div class="rippleJS"></div>
         </button>
-        <div class="title">Crear Aula</div>
+        <div class="title">Crear Tarea</div>
     </div>
     <div class="forms card">
         <form onsubmit="nuevaula(event)">
@@ -27,7 +27,6 @@
 </div>
 
 <script>
-    session.del('aulacontext')
     app.input.format();
     function nuevaula(e) {
         e.preventDefault();
