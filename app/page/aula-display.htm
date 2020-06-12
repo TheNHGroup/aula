@@ -32,7 +32,7 @@
                 x.json().then(act => {
                     acto = Object.keys(act);
                     for (let i = 0; i < acto.length; i++) {
-                        $('#aula-display').find('.page').append('<div class="card  grande" onclick="openclass(\'' + acto + '\')"> <p class="titi">' + act[acto].name + '</p><hr class="hhrr"><ul class="ulmenuop claa"><li>alumnos <p class="toright">0</p></li><li>tareas <p class="toright">0</p></li><li>pruebas <p class="toright">0</p></li></ul> <div class="rippleJS"></div></div>')
+                        $('#aula-display').find('.page').append('<div class="card  grande" onclick="openclass(\'' + acto[i] + '\')"> <p class="titi">' + act[acto[i]].name + '</p><hr class="hhrr"><ul class="ulmenuop claa"><li>alumnos <p class="toright">0</p></li><li>tareas <p class="toright">0</p></li><li>pruebas <p class="toright">0</p></li></ul> <div class="rippleJS"></div></div>')
                     }
                 })
             })
