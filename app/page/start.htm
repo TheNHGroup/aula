@@ -76,6 +76,13 @@
                     local('user', JSON.stringify(act))
 
                     themize()
+
+                    if(act.num.verif.status == false){
+                        //hay que verificar
+                        local('code', act.num.verif.code);
+                        local('numv', act.num.num)
+                        local('vuser', app.user.actual())
+                    }
                 })
             })
         }

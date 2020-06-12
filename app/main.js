@@ -1,4 +1,4 @@
-
+var require_phone_validation = true;
 var installable = false;
 
 if ('serviceWorker' in navigator) {
@@ -131,7 +131,7 @@ app.login = {
     in: (e) => {
         e.preventDefault();
         inp = $(e.target).find('input')
-        var userIn = inp[0].value.toLowerCase().replace('.', '_').replace('@', '_').replace(' ', '');
+        var userIn = inp[0].value.toLowerCase().split('.').join('_').replace('@', '_').replace(' ', '');
         var passIn = inp[1].value;
         if (userIn && passIn) {
             fetch('https://aula-7e215.firebaseio.com/users/' + userIn + '.json', { cache: 'no-store' }).then(x => {

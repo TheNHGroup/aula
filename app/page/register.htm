@@ -4,7 +4,7 @@
     <p class="titpri">Completa los datos para continuar</p>
     <div class="forms">
         <br>
-        <form>
+        <form onsubmit="reg(event)">
             <input class="ainp" type="text" placeholder="Nombre" autocomplete="off"
                 style="background-color: var(--contrast);" name="form-name" required maxlength="100"
                 oninvalid="this.setCustomValidity('Ingrese su nombre')" oninput="this.setCustomValidity('')">
@@ -14,20 +14,23 @@
             <input class="ainp" type="text" placeholder="E-mail" autocomplete="off"
                 style="background-color: var(--contrast);" name="form-name" required maxlength="100"
                 oninvalid="this.setCustomValidity('Ingrese su e-mail')" oninput="this.setCustomValidity('')">
-            <input class="ainp" type="text" placeholder="Número celular" autocomplete="off"
+            <input class="ainp" type="text" placeholder="Número celular (con prefijo del país)" autocomplete="off"
                 style="background-color: var(--contrast);" name="form-name" required maxlength="100"
                 oninvalid="this.setCustomValidity('Ingrese su número celular')" oninput="this.setCustomValidity('')">
             <input class="ainp" type="password" placeholder="Contraseña" style="background-color: var(--contrast);"
                 name="form-pass" required maxlength="20" oninvalid="this.setCustomValidity('Ingrese su contraseña')"
                 oninput="this.setCustomValidity('')" autocomplete="new-password"><br>
 
+            <input type="submit" id="btnreg" hidden>
         </form>
         <br>
         <a href="./index.html?cGFnZS9sb2dpbi5odG0=">ya tengo cuenta</a>
     </div>
     <div class="btbarcon">
-        <button class="nex round" onclick="openPg('aula-create-first-scnd');">Siguiente <div class="rippleJS">
+        <button class="nex round" onclick="$('#btnreg').click()">Siguiente <div class="rippleJS">
             </div></button>
+
+
     </div>
 
 </div>
@@ -76,6 +79,7 @@
         left: calc(50% - 50px);
         background-size: cover;
     }
+
     @media(max-height:600px) {
         .forms {
             top: calc(50% - 180.5px) !important;
@@ -92,6 +96,7 @@
         .titpri {
             display: none !important
         }
+
         .logo {
             display: none !important
         }
@@ -100,4 +105,95 @@
 
 <script>
     app.input.format();
+
+
+
+
+    const reg = (e) => {
+        e.preventDefault();
+        inp = $(e.target).find('input')
+        var usrname = inp[0].value, usrape = inp[1].value, usrmail = inp[2].value, usrnum = inp[3].value, usrpass = inp[4].value, rara = Math.floor(1000 + Math.random() * 9000);
+        var prefname = (usrname.split(' ')[1]) ? usrname.split(' ')[0][0].toUpperCase() + usrname.split(' ')[0].slice(1) : usrname[0].toUpperCase() + usrname.slice(1);
+        if (usrape && usrape && usrmail && usrnum && usrpass) {
+            if (usrmail.includes('@')) {
+                if (usrpass.length > 6) {
+                    fetch('https://aula-7e215.firebaseio.com/users/' + usrmail.toLowerCase().split('.').join('_').replace('@', '_').replace(' ', '') + '.json', { cache: 'no-store' }).then(x => {
+                        x.json().then(act => {
+                            if (act) {
+                                app.notif('Este usuario ya existe')
+                            } else {
+
+                                validaa(usrname, usrape, usrmail, usrnum, usrpass, rara, prefname)
+                            }
+                        })
+                    })
+                }else{
+                    app.notif('La contraseña es muy corta')
+                }
+            } else {
+                app.notif('Ingrese E-mail correctamente')
+            }
+        }
+    }
+
+
+    function validaa(usrname, usrape, usrmail, usrnum, usrpass, rara, prefname) {
+        if (require_phone_validation) {
+            local('code', rara);
+            console.log('validacion activada')
+            var data = { 'number': usrnum };
+            fetch('https://script.google.com/macros/s/AKfycbyRuhQ70lekBs-lfifE8JepZFIvqXTatzlmHuOeuz5VxctrnYZB/exec?data=' + encodeURI(JSON.stringify(data)))
+                .then((x) => {
+                    x.text().then((tx) => {
+                        tx = JSON.parse(tx)
+                        console.log(tx)
+                        if (tx.valid) {
+
+                            fetch('https://aula-7e215.firebaseio.com/users.json', { cache: 'no-store' }).then(x => {
+                                x.json().then(act => {
+
+                                    act[usrmail.toLowerCase().split('.').join('_').replace('@', '_').replace(' ', '')] = { 'name': usrname, 'lastn': usrape, 'email': usrmail, 'prefname': prefname, 'num': { 'num': tx["international-number"], 'verif': { 'status': false, 'code': rara } }, 'pass': usrpass, 'theme': { 'shadows': 'on', 'night': 'off' } };
+
+                                    fetch('https://aula-7e215.firebaseio.com/users.json', {
+                                        method: 'PUT',
+                                        body: JSON.stringify(act)
+                                    }).then(() => {
+                                        local('numv', usrnum);
+                                        local('vuser', usrmail.toLowerCase().split('.').join('_').replace('@', '_').replace(' ', ''))
+                                        openPg('phone-validate-sending');
+                                    })
+                                })
+                            })
+
+
+
+                        } else {
+                            app.notif('Número no válido')
+                        }
+                    })
+                })
+
+
+
+        } else {
+            console.log('validacion desactivada')
+
+            fetch('https://aula-7e215.firebaseio.com/users.json', { cache: 'no-store' }).then(x => {
+                x.json().then(act => {
+
+                    act[usrmail.toLowerCase().split('.').join('_').replace('@', '_').replace(' ', '')] = { 'name': usrname, 'lastn': usrape, 'email': usrmail, 'prefname': prefname, 'num': { 'num': usrnum, 'verif': { 'status': false, 'code': rara } }, 'pass': usrpass, 'theme': { 'shadows': 'on', 'night': 'off' } };
+
+                    fetch('https://aula-7e215.firebaseio.com/users.json', {
+                        method: 'PUT',
+                        body: JSON.stringify(act)
+                    }).then(() => {
+                        window.location.replace('./index.html?cGFnZS9sb2dpbi5odG0=')
+                    })
+                })
+            })
+
+        }
+    }
+
+
 </script>
