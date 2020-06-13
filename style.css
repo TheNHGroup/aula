@@ -65,6 +65,11 @@ body {
     width: 100%;
     height: 1000px;
     background-color: #fff;
+    color: #66327a;
+}
+
+.bann2 .title {
+    font-size: 27px;
 }
 
 button {
@@ -110,7 +115,6 @@ button.prf {
         width: 100%;
         text-align: center;
     }
-
     .buttonspam button {
         padding: 12px 30px 12px 30px;
         border-radius: 50px;
@@ -119,5 +123,39 @@ button.prf {
         box-shadow: 3px 3px 10px -1px #0000001c;
         position: relative;
     }
- 
+}
+
+.conti {
+    position: relative;
+    padding: 20px;
+    border: #66327a solid 1px;
+    width: 390px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.cintiti .conti {
+    float: left;
+    clear: none;
+}
+
+.cintiti {
+    position: relative;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.banti {
+    font-size: 30px;
+    margin-left: 10%;
+}
+.cintiti2 {
+    position: relative;
+    width: 90%;
+    margin-left: 5%;
+}
+.cintiti2 .conti {
+    float: left;
+    clear: none;
+    border: none;
 }
