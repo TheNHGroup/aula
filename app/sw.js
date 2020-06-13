@@ -4,7 +4,7 @@ en el almacenamiento del dispositivo para que se pueda acceder
 sin conexion a la app. (por ahora solo mostrará pantalla Ofline.html)
 */
 
-var vCache = false, appVer = 'beta 0.2';
+var vCache = false, appVer = 'beta 0.3';
 
 (async () => {
     var nativeAddAll = Cache.prototype.addAll;
