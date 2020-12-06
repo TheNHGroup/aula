@@ -42,14 +42,12 @@ const goTo = (data) => {
         app.getFile(data.id).then((page) => {
             $('app').hide('fade', 100, () => {
                 $('app').html(page)
-              
                 document.title = $('pagetitle').html()
                 app.state.replace({ data: data }, data.id, '?' + btoa(data.id))
                 $('app').show('fade', 100)
                 $('.loading').hide('fade', 200);
             })
         })
-
     } else if (data.type && data.type == 'state') {
         session('lastState', JSON.stringify(data))
         app.state.push({ data: data }, data.id, '?' + btoa(data.id))
@@ -75,11 +73,8 @@ app.state = {
             volver(JSON.parse(session('lastState')).id);
             session('lastState', JSON.stringify(e.state.data))
         }
-
     }
-
 }
-
 /// ABRIR PAGINA ///
 
 function openPg(id) {
