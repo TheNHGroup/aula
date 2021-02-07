@@ -1,6 +1,6 @@
 // EVENT LISTENERS //
 
-window.onpopstate = (e) => { app.state.back(e) }
+window.onpopstate = (e) => app.state.back(e)
 
 $(() => {
     var nowst = window.location.search;
